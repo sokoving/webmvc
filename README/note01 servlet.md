@@ -1,3 +1,12 @@
+## 콘솔창 한글 깨짐 문제
+- shift + shift > vm 검색 > 사용자 지정 vm 옵션 편집
+- -Dfile.encoding=UTF-8 코드 추가
+
+## 한글 랜더링 깨짐 문제
+- resp.setCharacterEncoding("utf-8");
+- resp.setContentType("text/html");
+- 순서 지키기
+
 # mvc 시작하기
 1. spring initializr
 - Gradle Project

@@ -1,18 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
 
-<form action="/info">
-    # 신장 : <input type="text" name="height">
-    <br>
-    # 무게 : <input type="text" name="weight">
-    <br>
-    <button type="submit">확인</button>
-</form>
+<!--확장자가 있으면 정적 리소스 > 미리 짜둔 html 페이지로 이동-->
+<a href="/info.html">체질량 지수 계산하기</a>
+<br>
+<!--확장자가 없으면 동적 리소스 > /register-form과 /members 요청을 처리할 서블릿 클래스가 필요함-->
+<a href="/register-form">회원 가입하기(서블릿 버전)</a>
+<br>
+<a href="/members">회원 목록 보기(서블릿 버전)</a>
+<br><br>
+<a href="/chap02/reg_form.jsp">회원 가입하기(jsp 버전)</a>
+<br>
+<a href="/chap02/members.jsp">회원 목록 보기(jsp 버전)</a>
 
 </body>
 </html>
