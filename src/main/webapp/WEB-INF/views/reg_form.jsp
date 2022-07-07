@@ -16,10 +16,11 @@
 </head>
 <body>
     
-    <h1>jsp버전 회원가입 양식</h1>
+    <h1>mvc버전 회원가입 양식</h1>
 
-    <!-- 클라이언트가 jsp에 직접 요청 :  -->
-    <form action="/chap02/reg_process.jsp" method="post">
+    <!-- /mvc/save  : 절대경로  > http://localhost:8181/mvc/save -->
+    <!-- save : 상대경로(./save) > http://localhost:8181/mvc/save  -->
+    <form action="save" method="post">
         <label>
             # 계정명: <input type="text" name="account">
         </label>
@@ -33,6 +34,8 @@
             <button type="submit">회원가입</button>
         </label>
     </form>
+
+
 
 </body>
 </html>

@@ -12,14 +12,39 @@
 <!--확장자가 있으면 정적 리소스 > 미리 짜둔 html 페이지로 이동-->
 <a href="/info.html">체질량 지수 계산하기</a>
 <br>
+
+
 <!--확장자가 없으면 동적 리소스 > /register-form과 /members 요청을 처리할 서블릿 클래스가 필요함-->
 <a href="/register-form">회원 가입하기(서블릿 버전)</a>
 <br>
 <a href="/members">회원 목록 보기(서블릿 버전)</a>
 <br><br>
+
+
+<!-- 클라이언트가 경로로 직접 접근이 가능 (보안에 치명적) -->
+<!-- http://localhost:8181/chap02/reg_form.jsp > 경로 노출됨 -->
 <a href="/chap02/reg_form.jsp">회원 가입하기(jsp 버전)</a>
 <br>
 <a href="/chap02/members.jsp">회원 목록 보기(jsp 버전)</a>
+<br><br>
 
+
+<!-- 클라이언트가 요청한 정보를 가지고 서버가 페이지에 접근 (클라이언트 직접 접근 방지) -->
+<!-- http://localhost:8181/mvc/join > 경로 노출 안 됨 -->
+<a href="/mvc/join">회원 가입하기(mvc 버전)</a>
+<br>
+<a href="/mvc/show">회원 목록 보기(mvc 버전)</a>
+
+<br><br>
+
+<a href="/mvc/v1/join">회원 가입하기(mvc v1 버전)</a>
+<br>
+<a href="/mvc/v1/show">회원 목록 보기(mvc v1 버전)</a>
+
+<br><br>
+
+<a href="/mvc/v2/join">회원 가입하기(mvc v2 버전)</a>
+<br>
+<a href="/mvc/v2/show">회원 목록 보기(mvc v2 버전)</a>
 </body>
 </html>
