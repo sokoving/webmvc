@@ -1,4 +1,7 @@
-package com.spring.webmvc.chap04.v2;
+package com.spring.webmvc.chap04;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -6,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Setter @Getter
 // 뷰를 포워딩하는 기능
 public class View {
 

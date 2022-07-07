@@ -1,5 +1,6 @@
 package com.spring.webmvc.chap04.v2;
 
+import com.spring.webmvc.chap04.View;
 import com.spring.webmvc.chap04.v2.controller.*;
 
 import javax.servlet.ServletException;
