@@ -16,6 +16,6 @@ public class RemoveController implements ControllerV4 {
         repository.remove(Integer.parseInt(paramMap.get("userNum")));
 
         // 회원목록으로 리다이렉트
-        return "redirect:/show";
+        return "redirect:show";
     }
 }

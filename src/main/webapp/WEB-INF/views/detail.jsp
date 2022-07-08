@@ -13,11 +13,33 @@
 <body>
 
     <h1>${m.userNum}번 회원 상세 정보</h1>
+
     <ul>
         <li># 계정명: ${m.account}</li>
         <li># 비밀번호: ${m.password}</li>
         <li># 이름: ${m.userName}</li>
     </ul>
+    <br>
+    <a id="rm-btn" href="/mvc/v4/remove?userNum=${m.userNum}">[delete]</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="/mvc/v5/home">[Home]</a>
+    &nbsp;<a href="/mvc/v5/show">[Member List]</a>
+    
+
+
+    <script>
+        // 회원 삭제 확인 띄우기
+        const $rmBtn = document.querySelector('#rm-btn');
+        $rmBtn.addEventListener('click', e => {
+
+            if (!confirm('진짜루 삭제???')) {
+                // 링크 이동 중지
+                e.preventDefault();
+                // 삭제 취소
+                return;
+            }
+            // 삭제 진행
+        });
+    </script>
 
 </body>
 
