@@ -2,6 +2,9 @@
 - ctrl + alt + m
 - 메서드명으로 메서드의 역할을 설명할 수 있고 변수 사용도 자유로워짐
 
+## 스프링 코드 보기
+- 외부 라이브러리 > Gradle: org.springframework:spring-webmvc:5.3.21 > wervlet
+
 ## 콘솔창 한글 깨짐 문제
 - shift + shift > vm 검색 > 사용자 지정 vm 옵션 편집
 - -Dfile.encoding=UTF-8 코드 추가

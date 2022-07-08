@@ -3,7 +3,6 @@ package com.spring.webmvc.servlet.chap04.v3;
 
 import com.spring.webmvc.servlet.chap04.ModelAndView;
 import com.spring.webmvc.servlet.chap04.v3.controller.ControllerV3;
-import com.spring.webmvc.chap04.v3.controller.*;
 import com.spring.webmvc.servlet.chap04.v3.controller.FormController;
 import com.spring.webmvc.servlet.chap04.v3.controller.SaveController;
 import com.spring.webmvc.servlet.chap04.v3.controller.ShowController;

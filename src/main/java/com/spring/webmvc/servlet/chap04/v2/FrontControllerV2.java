@@ -1,7 +1,6 @@
 package com.spring.webmvc.servlet.chap04.v2;
 
 import com.spring.webmvc.servlet.chap04.View;
-import com.spring.webmvc.chap04.v2.controller.*;
 import com.spring.webmvc.servlet.chap04.v2.controller.ControllerV2;
 import com.spring.webmvc.servlet.chap04.v2.controller.FormController;
 import com.spring.webmvc.servlet.chap04.v2.controller.SaveController;
