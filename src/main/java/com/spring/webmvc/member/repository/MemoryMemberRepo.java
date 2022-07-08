@@ -38,6 +38,11 @@ public class MemoryMemberRepo implements MemberRepository {
 
     @Override
     public Member findOne(int userNum) {
-        return null;
+        return memberMap.get(userNum);
+    }
+
+    @Override
+    public void remove(int userNum) {
+        memberMap.remove(userNum);
     }
 }

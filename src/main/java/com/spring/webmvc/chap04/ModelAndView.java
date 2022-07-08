@@ -25,6 +25,9 @@ public class ModelAndView {
         model.getModel().put(key, o);
     }
 
+    // 모델 객체의 데이터를 삭제하는 메서드
+
+
     public void render(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.view.render(req, resp);
     }
