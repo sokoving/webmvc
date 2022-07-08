@@ -22,7 +22,7 @@
             for (Member m : memberList) {
         %>
             <li>
-                # 회원번호 : <%= m.getUserNum() %>, 아이디: <%= m.getAccount() %>, 이름: <%= m.getUserName() %>
+                # 회원번호 : ${m.getUserNum}, 아이디: ${m.getAccount}, 이름: ${m.getUserName}
             </li>
         <% } %>
 

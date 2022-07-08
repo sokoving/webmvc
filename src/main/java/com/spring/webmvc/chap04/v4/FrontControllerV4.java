@@ -1,10 +1,9 @@
-package com.spring.webmvc.chap04.v3;
+package com.spring.webmvc.chap04.v4;
 
 
+import com.spring.webmvc.chap04.Model;
 import com.spring.webmvc.chap04.ModelAndView;
-import com.spring.webmvc.chap04.View;
-import com.spring.webmvc.chap04.v3.controller.ControllerV3;
-import com.spring.webmvc.chap04.v3.controller.*;
+import com.spring.webmvc.chap04.v4.controller.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,16 +15,17 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
-// /mvc/v3으로 시작하는 모든 요청을 다 처리하는 하나의 "서블릿"
-@WebServlet("/mvc/v3/*")
-public class FrontControllerV3 extends HttpServlet {
-    private final Map<String, ControllerV3> controllerMap
+// /mvc/v4으로 시작하는 모든 요청을 다 처리하는 하나의 "서블릿"
+@WebServlet("/mvc/v4/*")
+public class FrontControllerV4 extends HttpServlet {
+    private final Map<String, ControllerV4> controllerMap
             = new HashMap<>();
 
-    public FrontControllerV3() {
-        controllerMap.put("/mvc/v3/join", new FormController());
-        controllerMap.put("/mvc/v3/save", new SaveController());
-        controllerMap.put("/mvc/v3/show", new ShowController());
+    public FrontControllerV4() {
+        controllerMap.put("/mvc/v4/join", new FormController());
+        controllerMap.put("/mvc/v4/save", new SaveController());
+        controllerMap.put("/mvc/v4/show", new ShowController());
+        controllerMap.put("/mvc/v4/members", new FindOneController());
     }
 
     @Override
@@ -36,15 +36,24 @@ public class FrontControllerV3 extends HttpServlet {
         String uri = req.getRequestURI();
 
         // 컨트롤러맵에서 방금 들어온 요청에 따른 적합한 컨트롤러를 꺼내옴
-        ControllerV3 controller = controllerMap.get(uri);
+        ControllerV4 controller = controllerMap.get(uri);
+
+        if (controller == null) {
+            resp.setStatus(404); // 404 : page not found
+            return;
+        }
 
         // 요청 파라미터(query parameter)를 전부 읽어서 하위 컨트롤러들에게 보내줌
         // key: 파라미터의 key, value: 파라미터의 value
         Map<String, String> paramMap = createParamMap(req);
 
-        ModelAndView mv = controller.process(paramMap);
+        // 하위 컨트롤러 말고 프론트 컨트롤러가 ModelAndView 생성, 실행
+        Model model = new Model(); // 모델객체 생성해서 하위 컨트롤러에게 전달
+        String viewName = controller.process(paramMap, model);
+        ModelAndView mv = new ModelAndView(viewName);
+        mv.setModel(model); // 모델앤뷰 객체에 데이터 모델 저장장
 
-        // 모델 데이터를 jsp로 전송
+       // 모델 데이터를 jsp로 전송
         modelToView(req, mv);
 
         // 화면 렌더링

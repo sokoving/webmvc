@@ -35,4 +35,9 @@ public class MemoryMemberRepo implements MemberRepository {
         }
         return memberList;
     }
+
+    @Override
+    public Member findOne(int userNum) {
+        return null;
+    }
 }

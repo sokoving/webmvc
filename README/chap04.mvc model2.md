@@ -27,6 +27,8 @@ chap04 스프링 mvc 개발 과정
 
 ## V3
 - view, 컨틀롤러 클래스에서 서블릿 요소 뻬내기
+## V4
+- 리턴 타입 ModelAndView > String
 
 
 # 프론트 컨트롤러 MVC 패턴
