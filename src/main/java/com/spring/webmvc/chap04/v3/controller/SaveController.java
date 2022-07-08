@@ -25,8 +25,6 @@ public class SaveController implements ControllerV3 {
         repository.save(member);
 
         //3. 홈 화면으로 이동 (리다이렉션)
-//        response.sendRedirect("/");
-
-        return null;
+        return new View("redirect:/");
     }
 }

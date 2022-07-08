@@ -3,6 +3,7 @@ package com.spring.webmvc.chap04.v3;
 
 import com.spring.webmvc.chap04.View;
 import com.spring.webmvc.chap04.v3.controller.ControllerV3;
+import com.spring.webmvc.chap04.v3.controller.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,9 +22,9 @@ public class FrontControllerV3 extends HttpServlet {
             = new HashMap<>();
 
     public FrontControllerV3() {
-//        controllerMap.put("/mvc/v3/join", new FormController());
-//        controllerMap.put("/mvc/v3/save", new SaveController());
-//        controllerMap.put("/mvc/v3/show", new ShowController());
+        controllerMap.put("/mvc/v3/join", new FormController());
+        controllerMap.put("/mvc/v3/save", new SaveController());
+        controllerMap.put("/mvc/v3/show", new ShowController());
     }
 
     @Override
@@ -36,13 +37,6 @@ public class FrontControllerV3 extends HttpServlet {
         // 컨트롤러맵에서 방금 들어온 요청에 따른 적합한 컨트롤러를 꺼내옴
         ControllerV3 controller = controllerMap.get(uri);
 
-        // null 처리하면 404(페이지를 찾을 수 없음)
-        // null 처리 안 하면 500 에러  (java 코드 문제)
-        if (controller == null) {
-            resp.setStatus(404);
-            return;
-        }
-
         // 요청 파라미터(query parameter)를 전부 읽어서 하위 컨트롤러들에게 보내줌
         // key: 파라미터의 key, value: 파라미터의 value
         Map<String, String> paramMap = createParamMap(req);
@@ -53,7 +47,9 @@ public class FrontControllerV3 extends HttpServlet {
     }
 
     private Map<String, String> createParamMap(HttpServletRequest req) {
+        // 사용자가 입력한 쿼리 파라미터를 저장할 맵
         Map<String, String> paramMap = new HashMap<>();
+        //
         Enumeration<String> parameterNames = req.getParameterNames();
 
         while (parameterNames.hasMoreElements()) {
