@@ -25,4 +25,7 @@ public class CoffeeController {
         model.addAttribute("p", price);
         return "chap01/coffee-result";
     }
+
+
+
 }

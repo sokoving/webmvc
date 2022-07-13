@@ -14,13 +14,15 @@
                 public DataSource dataSource() {
                     // 커넥션 풀: 데이터베이스 연결 객체를 모아둔 곳
                     HikariConfig config = new HikariConfig();
-                    config.setUsername("sqld");
+                    config.setUsername("spring4");
                     config.setPassword("1234");
                     config.setJdbcUrl("jdbc:oracle:thin:@localhost:1521:xe");
                     config.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+            
                     return new HikariDataSource(config);
+            
                 }
-            }
+}
 ```
 
 

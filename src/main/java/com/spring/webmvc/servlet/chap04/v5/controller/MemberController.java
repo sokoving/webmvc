@@ -2,20 +2,18 @@ package com.spring.webmvc.servlet.chap04.v5.controller;
 
 import com.spring.webmvc.servlet.member.model.Member;
 import com.spring.webmvc.servlet.member.repository.MemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@RequestMapping("/mvc/v5/*")
-@Controller // 컨트롤러 역할을 하는 @Component
+//@RequestMapping("/mvc/v5/*")
+//@Controller // 컨트롤러 역할을 하는 @Component
 public class MemberController {
 
     private final MemberRepository repository;
 
-    @Autowired
+//    @Autowired
     public MemberController(MemberRepository repository) {
         this.repository = repository;
     }

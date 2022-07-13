@@ -11,7 +11,7 @@
 <body>
 
     <h1>책 주문하기</h1>
-    <form action="#" method="get">
+    <form action="/book/result" method="get">
         <label>
             # 책 목록 <br>
             <select id="menu-sel" name="book-name">

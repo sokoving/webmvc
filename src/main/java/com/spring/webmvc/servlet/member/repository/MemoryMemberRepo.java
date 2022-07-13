@@ -1,11 +1,10 @@
 package com.spring.webmvc.servlet.member.repository;
 
 import com.spring.webmvc.servlet.member.model.Member;
-import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository // 빈 등록(@Componet)과 동시에 저장소라는 걸 명시
+//@Repository // 빈 등록(@Componet)과 동시에 저장소라는 걸 명시
 public class MemoryMemberRepo implements MemberRepository {
 
     // 회원 정보를 저장할 메모리 저장소
