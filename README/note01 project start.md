@@ -1,3 +1,7 @@
+## 로그 남기기
+```@Log4j2
+log.info("/coffee/form GET Request");
+```
 ## 메서드 추출
 - ctrl + alt + m
 - 메서드명으로 메서드의 역할을 설명할 수 있고 변수 사용도 자유로워짐
