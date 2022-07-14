@@ -9,8 +9,8 @@
  + /spring/about 요청이 들어오면 해당 메서드는 실행시킨다
 - 클래스에 @RequestMapping("/spring") 하면 하위 컨트롤러에는 /spring 안 써도 됨
 
-## 3. return "redirect:/mvc/join"
-- 메서드 리턴값으로 리다이렉트/포워딩할 페이지의 경로를 String 타입으로 적는다
+## 3. return
+- [String] 메서드 리턴값으로 리다이렉트/포워딩할 페이지의 경로를 String 타입으로 적는다
  + 접미에 WEB-INF/views 자동 삽입됨(그 다음 경로부터 쓰기)
  + 접두에 .jsp 자동 삽입
 - 포워딩 : return "about";
@@ -20,6 +20,17 @@
             public String form(){
                 log.info("/coffee/form GET Request");
                 return "chap01/coffee-form";
+            }
+```
+- [ModelAndView] 새 모델앤뷰 객체를 생성하고 파라미터를 넣어 리턴
+```java
+            @RequestMapping("/score/detail")
+            public ModelAndView detail(int stuNum){
+                log.info("/score/detail GET - " + stuNum);
+                Score score = repository.findOne(stuNum);
+                ModelAndView mv = new ModelAndView("chap02/score-detail");
+                mv.addObject("s", score);
+                return mv;
             }
 ```
 

@@ -105,19 +105,14 @@
                 </c:forEach>
             </ul>
             <hr>
-            <form action="/score/order" method="POST">
+            <form action="/score/list" method="GET">
                 <label>
-                    # 정렬하기 <br>
-                    <select name="order">
-                        <option value="stuNum">학번</option>
-                        <option value="stuName">이름</option>
-                        <option value="kor">국어</option>
-                        <option value="eng">영어</option>
-                        <option value="math">수학</option>
-                        <option value="total">총점</option>
+                    <select name="sort">
+                        <option value="num">학번</option>
+                        <option value="name">이름</option>
                         <option value="average">평균</option>
-                        <option value="grade">학점</option>
                     </select>
+                    <button type="submit">정렬하기</button>
                 </label>
             </form>
         </section>

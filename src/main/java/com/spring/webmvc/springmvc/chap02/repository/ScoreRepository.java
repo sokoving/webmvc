@@ -9,13 +9,10 @@ public interface ScoreRepository {
     boolean save(Score score);
 
     // 전체 점수 정보 조회
-    List<Score> findAll();
+    List<Score> findAll(String sort);
 
     Score findOne(int stuNum);
 
     boolean remove(int stuNum);
-
-    // 정렬하기
-    boolean order(String orderBy);
 
 }

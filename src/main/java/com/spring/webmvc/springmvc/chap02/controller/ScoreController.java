@@ -7,6 +7,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -20,13 +22,26 @@ public class ScoreController {
 
     // 점수 등록 후 조회 화면
     @RequestMapping("/score/list")
-    public String list(Model model){
-        log.info("/score/list GET 요청!!");
+    public String list(
+            // 파라미터가 없으면 num, 있으면 바뀜
+            @RequestParam(defaultValue = "num") String sort,
+            Model model){
+        log.info("/score/list GET 요청!! - param1 : {}", sort);
 
         // jsp에 점수 정보 리스트 전달
-        List<Score> scoreList = repository.findAll();
-        model.addAttribute("scores", scoreList);
+        List<Score> scoreList = repository.findAll(sort);
 
+        // 이름 마킹 처리
+        for (Score s : scoreList) {
+            String original = s.getName();
+            StringBuilder markName = new StringBuilder(String.valueOf(original.charAt(0)));
+            for (int i = 0; i < original.length()-1; i++) {
+                markName.append("*");
+            }
+            s.setName(markName.toString());
+        }
+
+        model.addAttribute("scores", scoreList);
         return "chap02/score-list";
     }
 
@@ -44,28 +59,22 @@ public class ScoreController {
         return repository.save(score) ? "redirect:/score/list" : "redirect:/";
     }
 
-    // 점수 상세 정보
+    // 점수 상세 조회
     @RequestMapping("/score/detail")
-    public String detail(int stuNum, Model model){
+    public ModelAndView detail(int stuNum){
         log.info("/score/detail GET - " + stuNum);
         Score score = repository.findOne(stuNum);
-        model.addAttribute("s", score);
-
-        return "chap02/score-detail";
+        ModelAndView mv = new ModelAndView("chap02/score-detail");
+        mv.addObject("s", score);
+        return mv;
     }
 
     // 점수 삭제
     @RequestMapping("/score/delete")
     public String delete(int stuNum){
+        // 링크 요청은 get
         log.info("/score/delete GET - " + stuNum);
         return repository.remove(stuNum)? "redirect:/score/list" : "redirect:/";
-    }
-
-    // 정렬하기
-    @RequestMapping("/score/order")
-    public String order(String orderBy){
-
-        return "";
     }
 
 }

@@ -35,20 +35,34 @@ public class ScoreRepositoryImp implements ScoreRepository {
     }
 
     @Override
-    public List<Score> findAll() {
-        String sql = "SELECT * FROM tbl_score";
+    public List<Score> findAll(String sort) {
+        StringBuilder sql = new StringBuilder("SELECT * FROM tbl_score ");
+        // ?를 채우려고 하면 sort가 String이기 때문에 'sort' 이렇게 삽입됨
+        switch (sort) {
+            case "num":
+                sql.append(" ORDER BY stu_num");
+                break;
+            case "name":
+                sql.append(" ORDER BY stu_name");
+                break;
+            case "average":
+                sql.append(" ORDER BY average DESC");
+                break;
+        }
+
+
         // SELECT문의 경우는 query()
         // 인수로는 sql문과 RowMapper<T>의 구현체를 넣어야 한다
 //        return template.query(sql, new ScoreRowMapper());
 
-        return template.query(sql, new RowMapper<Score>() {
+/*        return template.query(sql, new RowMapper<Score>() {
             @Override
             public Score mapRow(ResultSet rs, int rowNum) throws SQLException {
                 return new Score(rs);
             }
-        });
+        });*/
 
-//        return template.query(sql, (rs, rowNum) -> new Score(rs));
+        return template.query(sql.toString(), (rs, rowNum) -> new Score(rs));
     }
 
     @Override
@@ -65,10 +79,4 @@ public class ScoreRepositoryImp implements ScoreRepository {
         return template.update(sql, stuNum) == 1;
     }
 
-    @Override
-    public List<Score> order(String orderBy) {
-        String sql = "SELECT * FROM tbl_score ORDER BY ?, stu_num";
-        return template.query(sql, (rs, rowNum) -> new Score(rs), orderBy);
     }
-
-}
