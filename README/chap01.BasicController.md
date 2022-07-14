@@ -63,13 +63,13 @@
 
 # 5. 쿼리 파라미터 받아서 다시 jsp에 건네주기
 ```java
-    @RequestMapping("/coffee/result")
-    public String result(String menu, int price, Model model){
-        log.info("/coffee/form POST - " + menu +", "+ price);
-        model.addAttribute("menu", menu);
-        model.addAttribute("p", price);
-        return "chap01/coffee-result";
-    }
+            @RequestMapping("/coffee/result")
+            public String result(String menu, int price, Model model){
+                log.info("/coffee/form POST - " + menu +", "+ price);
+                model.addAttribute("menu", menu);
+                model.addAttribute("p", price);
+                return "chap01/coffee-result";
+            }
 ```
 ```html
             <li># 주문하신 메뉴: ${menu}</li>
@@ -81,27 +81,27 @@
 ## 방법 1. HttpServletRequest 사용 (서블릿 스펙받기)
 - 예시 /spring/person?name=kim&age=30
 ```java
-        @RequestMapping("/spring/person")
-        public String person(HttpServletRequest request) {
-            String name = request.getParameter("name");
-            String age = request.getParameter("age");
-            return "";
-        }
+            @RequestMapping("/spring/person")
+            public String person(HttpServletRequest request) {
+                String name = request.getParameter("name");
+                String age = request.getParameter("age");
+                return "";
+            }
 ```
 ## 방법 2. @RequestParam 사용
 - 쿼리 파라미터 스펙과 메서드 매개변수 이름이 같으면 @RequestParam 생략 가능
 - @RequestParam("stu") 으로 별칭 가능
 - 예시) /spring/major?stu=kim&major=business&grade=3
 ```java
-        @RequestMapping("/spring/major")
-            public String major(String stu, String major, int grade)
-        { return ""; }
-
-        @RequestMapping("/spring/major")
-            public String major(@RequestParam("stu") String stu
-                                , @RequestParam String major
-                                , @RequestParam int grade)
-        { return ""; }
+            @RequestMapping("/spring/major")
+                public String major(String stu, String major, int grade)
+            { return ""; }
+    
+            @RequestMapping("/spring/major")
+                public String major(@RequestParam("stu") String stu
+                                    , @RequestParam String major
+                                    , @RequestParam int grade)
+            { return ""; }
 ```
 
 ## 방법 3: 커맨드 객체 이용하기 (파라미터가 인수로 나열하기에 너무 많을 때)
@@ -111,12 +111,24 @@
 - ex) /spring/order?oNum=22&goods=구두&amount=3&price=1000
  + 예시 Order 클래스의 필드 oNum, goods, amount, price
 ```java
-        @RequestMapping("/spring/order")
-        public String order(Order order){
-            System.out.println("order.getONum() = " + order.getONum());
-            System.out.println("order.getGoods() = " + order.getGoods());
-            System.out.println("order.getAmount() = " + order.getAmount());
-            System.out.println("order.getPrice() = " + order.getPrice());
-            return "";
-        }
+            @RequestMapping("/spring/order")
+            public String order(Order order){
+                System.out.println("order.getONum() = " + order.getONum());
+                System.out.println("order.getGoods() = " + order.getGoods());
+                System.out.println("order.getAmount() = " + order.getAmount());
+                System.out.println("order.getPrice() = " + order.getPrice());
+                return "";
+            }
+```
+
+## 방법 4: url에서 파라미터 얻기
+- 2, 3의 방식은 ?로 시작하는 쿼리 파라미터로 얻는 방법
+-  @PathVariable("un") 별칭 가능, @PathVariable 생략 불가
+```java
+            @GetMapping("/member/{un}")
+            @ResponseBody
+        //    public String member(@RequestParam String userName){
+            public String member(@PathVariable("un") String userName){
+                return "I am " + userName;
+            }
 ```
