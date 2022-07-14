@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest // 의존성 주입을 테스트 라인에서 사용 가ㅡㄴㅇ
+@SpringBootTest // 의존성 주입을 테스트 라인에서 사용 가능
 class ScoreRepositoryImpTest {
 
     @Autowired
@@ -43,11 +43,11 @@ class ScoreRepositoryImpTest {
     @Transactional  // 지워보고
     @Rollback       // 롤백시키기
     void findAllTest(){
-        System.out.println("findAllTest");
+/*        System.out.println("findAllTest");
         List<Score> all = repository.findAll();
         for (Score score : all) {
             System.out.println(score);
-        }
+        }*/
     }
 
 

@@ -2,11 +2,8 @@ package com.spring.webmvc.springmvc.chap02.repository;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 @Repository // 스프링 빈 등록( == @Component) > 객체 생성을 스프링에 맡김
