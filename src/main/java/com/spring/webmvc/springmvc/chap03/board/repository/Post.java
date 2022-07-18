@@ -1,4 +1,4 @@
-package com.spring.webmvc.springmvc.chap03.bord.repository;
+package com.spring.webmvc.springmvc.chap03.board.repository;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -33,4 +33,5 @@ public class Post {
         this.regDate = rs.getDate("reg_date");
         this.content = rs.getString("content");
     }
+
 }

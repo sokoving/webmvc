@@ -1,5 +1,4 @@
-package com.spring.webmvc.springmvc.chap03.bord.repository;
-
+package com.spring.webmvc.springmvc.chap03.board.repository;
 
 import java.util.List;
 
@@ -19,7 +18,5 @@ public interface BoardRepository {
 
     // 포스트 수정
     boolean modify(Post post);
-
-
 
 }

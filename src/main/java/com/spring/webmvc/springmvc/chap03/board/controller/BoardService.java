@@ -1,7 +1,7 @@
-package com.spring.webmvc.springmvc.chap03.bord.controller;
+package com.spring.webmvc.springmvc.chap03.board.controller;
 
-import com.spring.webmvc.springmvc.chap03.bord.repository.BoardRepository;
-import com.spring.webmvc.springmvc.chap03.bord.repository.Post;
+import com.spring.practice.chap03.board.repository.BoardRepository;
+import com.spring.practice.chap03.board.repository.Post;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -12,6 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Log4j2
 public class BoardService {
+
 
     private final BoardRepository repository;
 
@@ -37,6 +38,17 @@ public class BoardService {
     public boolean deleteService(int boardNo){
         log.info("BoardService - delete 요청!!");
         return repository.remove(boardNo);
+    }
+
+    // 게시글 수정 화면 요청 중간처리
+    public Post modifyFormService(int boardNo){
+        log.info("BoardService - modify Form 요청!!");
+        return repository.findOne(boardNo);
+    }
+
+    // 게시글 수정 등록 요청 중간 처리
+    public boolean modifyService(Post post){
+        return repository.modify(post);
     }
 
 }
