@@ -53,13 +53,13 @@ class ScoreMapperTest {
         assertTrue(flag);
     }
 
-/*    @Test
+    @Test
     @DisplayName("DB의 전체 학생 정보가 조회돼야 한다")
     void findAllTest(){
         for (Score score : mapper.findAll("name")) {
             System.out.println(score);
         }
-    }*/
+    }
 
     @Test
     @DisplayName("DB에서 특정 학생의 정보가 조회돼야 한다")

@@ -71,17 +71,5 @@
     </select>
 
 
-    <select id="findOne" resultMap="scoreMap">
-        SELECT * FROM tbl_score
-        WHERE stu_num=#{stuNum}
-    </select>
-
-
-    <!--  학생 개별 조회  -->
-    <select id="findOne" resultMap="scoreMap">
-        SELECT * FROM tbl_score
-        WHERE stu_num = #{stuNum}
-    </select>
-
 
 </mapper>
