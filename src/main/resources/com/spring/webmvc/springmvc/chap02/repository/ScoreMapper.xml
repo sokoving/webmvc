@@ -50,10 +50,32 @@
         <result property="stuNum" column="stu_num"/>
     </resultMap>
 
-    <!--  학생 전체 조회  -->
+    <!--  동적 SQL 작성법 : 학생 전체 조회  -->
+    <!--  동적 SQL 작성법  -->
     <select id="findAll" resultMap="scoreMap">
         SELECT * FROM tbl_score
+        <if test="sort == 'num'">
+            ORDER BY stu_num
+        </if>
+        <if test="sort == 'name'">
+            ORDER BY stu_name
+        </if>
+        <if test="sort == 'average'">
+            ORDER BY average DESC
+        </if>
     </select>
+
+    <select id="findOne" resultMap="scoreMap">
+        SELECT * FROM tbl_score
+        WHERE stu_num=#{stuNum}
+    </select>
+
+
+    <select id="findOne" resultMap="scoreMap">
+        SELECT * FROM tbl_score
+        WHERE stu_num=#{stuNum}
+    </select>
+
 
     <!--  학생 개별 조회  -->
     <select id="findOne" resultMap="scoreMap">

@@ -21,8 +21,9 @@ class ScoreMapperTest {
     @DisplayName("DB에 새 학생 정보가 등록돼야 한다")
     void saveTest(){
         for (int i = 1; i < 10; i++) {
-            Score score = new Score("학생" + i, i * 10 + i, i * 10 + i, i * 10 + i);
+            Score score = new Score("학생" + i, i * 10+i , i * 10+i, i * 10+i);
             System.out.println(score);
+            mapper.save(score);
         }
     }
 
@@ -52,13 +53,13 @@ class ScoreMapperTest {
         assertTrue(flag);
     }
 
-    @Test
+/*    @Test
     @DisplayName("DB의 전체 학생 정보가 조회돼야 한다")
     void findAllTest(){
-        for (Score score : mapper.findAll()) {
+        for (Score score : mapper.findAll("name")) {
             System.out.println(score);
         }
-    }
+    }*/
 
     @Test
     @DisplayName("DB에서 특정 학생의 정보가 조회돼야 한다")
