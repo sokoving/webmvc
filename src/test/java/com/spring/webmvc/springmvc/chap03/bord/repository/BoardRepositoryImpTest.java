@@ -1,5 +1,7 @@
 package com.spring.webmvc.springmvc.chap03.bord.repository;
 
+import com.spring.webmvc.springmvc.chap03.board.repository.BoardRepository;
+import com.spring.webmvc.springmvc.chap03.board.repository.Post;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

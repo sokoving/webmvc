@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- mapper태그는 sql을 매핑할때 사용하는 태그
+     namespace속성에는 사용할 인터페이스의 풀 패키지경로 + 인터페이스이름
+  -->
+<mapper namespace="com.spring.webmvc.springmvc.chap02.repository.ScoreMapper">
+
+    <!-- 학생 등록 SQL 작성 :  id속성에는 추상메서드 이름  -->
+    <insert id="save">
+        INSERT INTO tbl_score
+        (stu_num, stu_name, kor, eng, math, total, average, grade)
+        VALUES (seq_tbl_score.nextval, #{name}, #{kor}, #{eng}, #{math}, #{total}, #{average}, #{grade})
+    </insert>
+
+    <!-- 학생 정보 삭제 -->
+    <delete id="remove">
+        DELETE FROM tbl_score
+        WHERE stu_num = #{stuNum}
+    </delete>
+
+    <!--  학생 정보 수정  -->
+    <update id="modify">
+        UPDATE tbl_score
+        SET stu_name = #{name}, kor = #{kor}, eng = #{eng}, math=#{math}
+        WHERE stu_num = #{stuNum}
+    </update>
+
+    <!--
+        단일 컬럼이면 resultType 속성으로 데이터 타입 명시
+            <select id="findAll" resultType="int">
+                SELECT price FROM tbl_product
+                ORDER BY price DESC
+            </select>
+
+        다중 컬럼 조회 시에는 resultMap 속성으로 데이터를 개체 처리
+    -->
+    <!--
+        reultMap 설정  :  DB 컬럼과 자바 클래스 필드명의 차이를 지정
+             DB 컬럼과 필드명이 완벽히 일치하면 설정하지 않아도 되지만
+             자바에 스네이크 케이스를 쓰면 스프링에서 처리하다 오류가 날 수 있고
+             DB에 캐멀 케이스를 쓰면 대소문자 구분이 되지 않기 때문에 ResultMap 설정을 해야 한다
+                    모든 셀렉트에서 이 설정을 사용할 수 있다
+    -->
+    <resultMap id="scoreMap" type="com.spring.webmvc.springmvc.chap02.repository.Score">
+        <!--   property 속성에는 자바 필드명, column에는 Db 컬럼명    -->
+        <result property="name" column="stu_name"/>
+        <result property="stuNum" column="stu_num"/>
+    </resultMap>
+
+    <!--  학생 전체 조회  -->
+    <select id="findAll" resultMap="scoreMap">
+        SELECT * FROM tbl_score
+    </select>
+
+    <!--  학생 개별 조회  -->
+    <select id="findOne" resultMap="scoreMap">
+        SELECT * FROM tbl_score
+        WHERE stu_num = #{stuNum}
+    </select>
+
+
+</mapper>
