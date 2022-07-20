@@ -31,9 +31,20 @@ log.info("/coffee/form GET Request");
 - *Spring Web*
 
 2. main.resources.application.properties
-> server.port = 8181
-- 기본값 포트 8080은 오라클이 가지고 있기 때문에
-- 톰캣 포트를 8181로 변경
+```
+# 기본값 포트 8080은 오라클이 가지고 있기 때문에
+# 톰캣 포트를 8181로 변경
+server.port = 8181
+
+# view resolver setting
+spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp
+
+# log level setting
+logging.level.root=info
+
+logging.level.com.spring.webmvc.springmvc.chap03=trace
+```
 
 3. WebmvcApplication
 > main.java.com.spring.webmvc.WebmvcApplication
