@@ -24,4 +24,5 @@ public interface ScoreMapper {
     Score findOne(int stuNum);
 
 
+
 }
