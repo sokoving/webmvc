@@ -26,7 +26,7 @@ public class Score {
     private Grade grade; // 학점
 
     public Score() {
-        log.info("Score 기본 생성자 호출!!");
+        log.debug("Score 기본 생성자 호출!!");
     }
 
     public Score(String name, int kor, int eng, int math) {
